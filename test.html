@@ -1,0 +1,25 @@
+html
+<!DOCTYPE html>
+<html>
+<body>
+<h3>Test Register API</h3>
+<button onclick="tester()">Tester l'inscription</button>
+<p id="resultat"></p>
+
+<script>
+async function tester(){
+  const res = await fetch('http://localhost/cantine/api/auth/register.php', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      nom: "Test",
+      email: "test@gmail.com",
+      password: "123456"
+    })
+  });
+  const data = await res.json();
+  document.getElementById('resultat').innerText = JSON.stringify(data, null, 2);
+}
+</script>
+</body>
+</htm>
